@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -39,6 +40,8 @@ class LoginFragment : Fragment() {
         val email: EditText = view.findViewById(R.id.emailInput)
         val password: EditText = view.findViewById(R.id.passwordInput)
         val loginButton: Button = view.findViewById(R.id.loginButton)
+        val clickHere: TextView = view.findViewById(R.id.textView3)
+        val signupButton: Button = view.findViewById(R.id.signUpButton)
         loginButton.setOnClickListener {
             loginViewModel.user.value.let {
                 if (it != null) {
@@ -56,6 +59,12 @@ class LoginFragment : Fragment() {
         loginViewModel.token.observe(viewLifecycleOwner){
             Log.d("xxx", "navigate to list")
             findNavController().navigate(R.id.action_loginFragment_to_listFragment)
+        }
+        clickHere.setOnClickListener(){
+            //findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+        signupButton.setOnClickListener(){
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
         return view
     }
