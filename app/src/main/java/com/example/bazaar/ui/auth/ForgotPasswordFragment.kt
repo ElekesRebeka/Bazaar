@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.navigation.fragment.findNavController
 import com.example.bazaar.R
 
-class RegisterFragment : Fragment() {
+class ForgotPasswordFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,12 +18,8 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_register, container, false)
-        val clickHere: TextView = view.findViewById(R.id.textView3)
-        clickHere.setOnClickListener(){
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-        }
-        return view;
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_forgot_password, container, false)
     }
 
     companion object {
