@@ -8,4 +8,7 @@
     <string name="signup">Sign up</string>
     <string name="register">Register</string>
     <string name="emailMe">Email me</string>
+    <string name="forgotPassword">Forgot password</string>
+    <string name="top_app_bar">Bazaar</string>
+    <string name="username">Username</string>
 </resources>
