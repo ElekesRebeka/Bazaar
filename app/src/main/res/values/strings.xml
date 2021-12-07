@@ -11,4 +11,10 @@
     <string name="forgotPassword">Forgot password</string>
     <string name="top_app_bar">Bazaar</string>
     <string name="username">Username</string>
+    <string name="phoneNumber">Phone number</string>
+    <string name="publish">Publish</string>
+    <string name="filter">Filter</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
+    <string name="orderButton">Order now</string>
 </resources>

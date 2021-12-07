@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -16,6 +19,7 @@ import com.example.bazaar.model.Product
 import com.example.bazaar.repository.Repository
 import com.example.bazaar.viewmodels.ListViewModel
 import com.example.bazaar.viewmodels.ListViewModelFactory
+import com.google.android.material.appbar.AppBarLayout
 
 
 class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.OnItemLongClickListener {

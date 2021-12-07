@@ -24,7 +24,11 @@
         android:id="@+id/listFragment"
         android:name="com.example.bazaar.ui.products.ListFragment"
         android:label="fragment_list"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.bazaar.ui.auth.RegisterFragment"
@@ -39,4 +43,13 @@
         android:name="com.example.bazaar.ui.auth.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.bazaar.ui.auth.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
 </navigation>

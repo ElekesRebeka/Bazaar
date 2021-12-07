@@ -11,11 +11,14 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.bazaar.R
 import com.example.bazaar.repository.Repository
 import com.example.bazaar.viewmodels.LoginViewModel
 import com.example.bazaar.viewmodels.LoginViewModelFactory
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -66,6 +69,7 @@ class LoginFragment : Fragment() {
         signupButton.setOnClickListener(){
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
+
         return view
     }
 
