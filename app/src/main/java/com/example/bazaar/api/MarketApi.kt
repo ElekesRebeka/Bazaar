@@ -16,4 +16,7 @@ interface MarketApi {
 
     @POST(Constants.REGISTER_URL)
     suspend fun register(@Body request: RegisterRequest): RegisterResponse
+
+    @POST(Constants.UPDATE_PROFILE_URL)
+    suspend fun updateProfile(@Body request: UpdateProfileRequest): UpdateProfileResponse
 }

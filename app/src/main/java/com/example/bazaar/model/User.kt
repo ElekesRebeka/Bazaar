@@ -40,6 +40,32 @@ data class RegisterResponse (
     var refresh_time: Long
 )
 
+@JsonClass(generateAdapter = true)
+data class UpdateProfileRequest (
+    var username: String,
+    var email: String,
+    var phone_number: String
+)
+
+@JsonClass(generateAdapter = true)
+data class UpdateData (
+    var username: String,
+    var phone_number: String,
+    var email: String,
+    var isActivated: Boolean,
+    var creation_time: Long,
+    var token: String,
+)
+
+@JsonClass(generateAdapter = true)
+data class UpdateProfileResponse (
+    var code: String,
+    var updateData: UpdateData,
+    var timestamp: String
+)
+
+
+
 // GSon converter
 //data class LoginRequest (
 //    @SerializedName("username")

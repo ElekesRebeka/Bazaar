@@ -12,6 +12,10 @@ class Repository {
         return RetrofitInstance.api.register(request)
     }
 
+    suspend fun update(request: UpdateProfileRequest): UpdateProfileResponse {
+        return RetrofitInstance.api.updateProfile(request)
+    }
+
     suspend fun getProducts(token: String): ProductResponse {
         return RetrofitInstance.api.getProducts(token)
     }
