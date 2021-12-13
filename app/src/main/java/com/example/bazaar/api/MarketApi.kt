@@ -9,7 +9,7 @@ interface MarketApi {
     suspend fun login(@Body request: LoginRequest): LoginResponse
 
     @GET(Constants.GET_PRODUCT_URL)
-    suspend fun getProducts(@Header("token") token: String): ProductResponse
+    suspend fun getProducts(@Header("token") token: String, @Header("limit") limit:Int = 100): ProductResponse
 
     @POST(Constants.REGISTER_URL)
     suspend fun register(@Body request: RegisterRequest): RegisterResponse
