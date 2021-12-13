@@ -1,33 +1,48 @@
 package com.example.bazaar.ui.products
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bazaar.R
+import com.example.bazaar.adapters.DataAdapter
+import com.example.bazaar.model.Product
+import com.example.bazaar.repository.Repository
+import com.example.bazaar.viewmodels.ListViewModel
+import com.example.bazaar.viewmodels.ListViewModelFactory
+import com.example.bazaar.viewmodels.LoginViewModel
+import com.example.bazaar.viewmodels.LoginViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapter.OnItemLongClickListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyMarketFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MyMarketFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    val factoryLogin = LoginViewModelFactory( Repository())
+    private val loginViewModel: LoginViewModel by lazy{
+        ViewModelProvider(requireActivity(),factoryLogin).get((LoginViewModel::class.java))
+    }
+
+    val factoryList = ListViewModelFactory(Repository())
+    private val listViewModel: ListViewModel by lazy{
+        ViewModelProvider(requireActivity(),factoryList).get((ListViewModel::class.java))
+    }
+
+    private lateinit var recycler_view: RecyclerView
+    //private lateinit var listViewModel: ListViewModel
+    //private lateinit var loginViewModel: LoginViewModel
+    private lateinit var adapter: DataAdapter
+    lateinit var filteredList: List<Product>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        //val factory = ListViewModelFactory(Repository())
+        //val factoryLogin = LoginViewModelFactory(requireActivity(), Repository())
+        //listViewModel = ViewModelProvider(requireActivity(), factory).get(ListViewModel::class.java)
+        //loginViewModel = ViewModelProvider(requireActivity(), factoryLogin).get(LoginViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -35,26 +50,40 @@ class MyMarketFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_market, container, false)
+        val view = inflater.inflate(R.layout.fragment_my_market, container, false)
+        recycler_view = view.findViewById(R.id.recycler_view)
+        Log.d("xxx","Logged in user ${loginViewModel.user.value}")
+        setupRecyclerView()
+        listViewModel.products.observe(viewLifecycleOwner){
+
+            //Log.d("xxx","IT user {${it.}")
+            filteredList = listViewModel.products.value?.filter { it.username == loginViewModel.user.value?.username  }!!
+            Log.d("xxx","List {$filteredList}")
+            adapter.setData(filteredList as ArrayList<Product>)
+            //adapter.setData(listViewModel.products.value as ArrayList<Product>)
+            adapter.notifyDataSetChanged()
+        }
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyMarketFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyMarketFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setupRecyclerView(){
+        adapter = DataAdapter(ArrayList<Product>(), this.requireContext(), this, this)
+        recycler_view.adapter = adapter
+        recycler_view.layoutManager = LinearLayoutManager(this.context)
+        recycler_view.addItemDecoration(
+            DividerItemDecoration(
+                activity,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+        recycler_view.setHasFixedSize(true)
+    }
+
+    override fun onItemClick(position: Int) {
+//        TODO("Not yet implemented")
+    }
+
+    override fun onItemLongClick(position: Int) {
+//        TODO("Not yet implemented")
     }
 }

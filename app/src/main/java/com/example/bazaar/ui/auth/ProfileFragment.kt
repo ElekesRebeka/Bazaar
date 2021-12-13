@@ -1,6 +1,7 @@
 package com.example.bazaar.ui.auth
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,18 +11,29 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.bazaar.MyApplication
 import com.example.bazaar.R
 import com.example.bazaar.repository.Repository
 import com.example.bazaar.viewmodels.*
 import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
-    lateinit var updateViewModel: UpdateViewModel
+    val factoryLogin = LoginViewModelFactory( Repository())
+    private val loginViewModel: LoginViewModel by lazy{
+        ViewModelProvider(requireActivity(),factoryLogin).get((LoginViewModel::class.java))
+    }
+
+    val factoryUpdate = UpdateViewModelFactory( Repository())
+    private val updateViewModel: UpdateViewModel by lazy{
+        ViewModelProvider(requireActivity(), factoryUpdate).get((UpdateViewModel::class.java))
+    }
+
+    //lateinit var updateViewModel: UpdateViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = UpdateViewModelFactory(this.requireContext(), Repository())
-        updateViewModel = ViewModelProvider(this, factory).get(UpdateViewModel::class.java)
+        //val factory = UpdateViewModelFactory(this.requireContext(), Repository())
+        //updateViewModel = ViewModelProvider(this, factory).get(UpdateViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -39,12 +51,15 @@ class ProfileFragment : Fragment() {
             updateViewModel.user.value.let {
                 if (it != null) {
                     it.username = username.text.toString()
+                    Log.d("xxx", it.username)
                 }
                 if (it != null) {
                     it.email = email.text.toString()
+                    Log.d("xxx", it.email)
                 }
                 if (it != null) {
                     it.phone_number = phone.text.toString()
+                    Log.d("xxx", it.phone_number)
                 }
             }
             lifecycleScope.launch {

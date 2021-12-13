@@ -11,14 +11,11 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.bazaar.R
 import com.example.bazaar.repository.Repository
 import com.example.bazaar.viewmodels.LoginViewModel
 import com.example.bazaar.viewmodels.LoginViewModelFactory
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -27,12 +24,17 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class LoginFragment : Fragment() {
-    private lateinit var loginViewModel: LoginViewModel
+    //private lateinit var loginViewModel: LoginViewModel
+
+    val factoryLogin = LoginViewModelFactory(Repository())
+    private val loginViewModel: LoginViewModel by lazy{
+        ViewModelProvider(requireActivity(),factoryLogin).get((LoginViewModel::class.java))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = LoginViewModelFactory(this.requireContext(), Repository())
-        loginViewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
+        //val factory = LoginViewModelFactory(Repository())
+        //loginViewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
     }
 
     override fun onCreateView(

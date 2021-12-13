@@ -2,6 +2,7 @@ package com.example.bazaar.repository
 
 import com.example.bazaar.api.RetrofitInstance
 import com.example.bazaar.model.*
+import retrofit2.http.Headers
 
 class Repository {
     suspend fun login(request: LoginRequest): LoginResponse {
@@ -12,8 +13,8 @@ class Repository {
         return RetrofitInstance.api.register(request)
     }
 
-    suspend fun update(request: UpdateProfileRequest): UpdateProfileResponse {
-        return RetrofitInstance.api.updateProfile(request)
+    suspend fun update(token:String, request: UpdateProfileRequest): UpdateProfileResponse {
+        return RetrofitInstance.api.updateProfile(token, request)
     }
 
     suspend fun getProducts(token: String): ProductResponse {

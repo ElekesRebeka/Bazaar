@@ -9,7 +9,7 @@ import com.example.bazaar.model.LoginRequest
 import com.example.bazaar.model.User
 import com.example.bazaar.repository.Repository
 
-class LoginViewModel (val context: Context, val repository: Repository) : ViewModel() {
+class LoginViewModel (val repository: Repository) : ViewModel() {
     var token: MutableLiveData<String> = MutableLiveData()
     var user = MutableLiveData<User>()
 

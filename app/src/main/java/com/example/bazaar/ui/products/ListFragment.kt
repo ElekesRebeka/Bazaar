@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -62,7 +64,7 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
     }
 
     override fun onItemClick(position: Int) {
-//        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_listFragment_to_productDetailFragment)
     }
 
     override fun onItemLongClick(position: Int) {
