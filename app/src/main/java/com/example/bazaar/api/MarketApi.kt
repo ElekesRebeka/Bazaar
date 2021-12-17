@@ -8,6 +8,9 @@ interface MarketApi {
     @POST(Constants.LOGIN_URL)
     suspend fun login(@Body request: LoginRequest): LoginResponse
 
+    @POST(Constants.RESET_PASSWORD_URL)
+    suspend fun resetPassword(@Body request: ResetPasswordRequest): ResetPasswordResponse
+
     @GET(Constants.GET_PRODUCT_URL)
     suspend fun getProducts(@Header("token") token: String, @Header("limit") limit:Int = 100): ProductResponse
 

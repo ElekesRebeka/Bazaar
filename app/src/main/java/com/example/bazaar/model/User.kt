@@ -64,6 +64,19 @@ data class UpdateProfileResponse (
     var timestamp: String
 )
 
+@JsonClass(generateAdapter = true)
+data class ResetPasswordRequest (
+    var username: String,
+    var email: String
+)
+
+@JsonClass(generateAdapter = true)
+data class ResetPasswordResponse (
+    var code: String,
+    var message: String,
+    var timestamp: String
+)
+
 
 
 // GSon converter

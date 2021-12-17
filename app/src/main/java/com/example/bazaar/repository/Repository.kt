@@ -2,11 +2,16 @@ package com.example.bazaar.repository
 
 import com.example.bazaar.api.RetrofitInstance
 import com.example.bazaar.model.*
+import retrofit2.http.Body
 import retrofit2.http.Headers
 
 class Repository {
     suspend fun login(request: LoginRequest): LoginResponse {
         return RetrofitInstance.api.login(request)
+    }
+
+    suspend fun resetPassword(@Body request: ResetPasswordRequest): ResetPasswordResponse{
+        return RetrofitInstance.api.resetPassword(request)
     }
 
     suspend fun register(request: RegisterRequest): RegisterResponse {

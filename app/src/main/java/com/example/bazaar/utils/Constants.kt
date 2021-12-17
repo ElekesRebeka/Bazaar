@@ -6,4 +6,5 @@ object Constants {
     const val GET_PRODUCT_URL ="products"
     const val REGISTER_URL ="user/register"
     const val UPDATE_PROFILE_URL ="user/update"
+    const val RESET_PASSWORD_URL ="user/reset"
 }
