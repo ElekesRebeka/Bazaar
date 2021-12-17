@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +24,7 @@ import com.example.bazaar.viewmodels.LoginViewModelFactory
 class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapter.OnItemLongClickListener {
 
     val factoryLogin = LoginViewModelFactory( Repository())
+    private lateinit var addProductButton: ImageButton
     private val loginViewModel: LoginViewModel by lazy{
         ViewModelProvider(requireActivity(),factoryLogin).get((LoginViewModel::class.java))
     }
@@ -52,6 +55,7 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_my_market, container, false)
         recycler_view = view.findViewById(R.id.recycler_view)
+        addProductButton = view.findViewById(R.id.addProductButton)
         Log.d("xxx","Logged in user ${loginViewModel.user.value}")
         setupRecyclerView()
         listViewModel.products.observe(viewLifecycleOwner){
@@ -62,6 +66,9 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
             adapter.setData(filteredList as ArrayList<Product>)
             //adapter.setData(listViewModel.products.value as ArrayList<Product>)
             adapter.notifyDataSetChanged()
+        }
+        addProductButton.setOnClickListener{
+            findNavController().navigate(R.id.action_myMarketFragment_to_addProductFragment)
         }
         return view
     }

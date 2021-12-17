@@ -17,4 +17,5 @@
     <string name="search">Search</string>
     <string name="profile">Profile</string>
     <string name="orderButton">Order now</string>
+    <string name="inactive">Inactive</string>
 </resources>
