@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="price_array">
+        <item>EUR</item>
+        <item>RON</item>
+        <item>Forint</item>
+    </string-array>
+    <string-array name="amount_array">
+        <item>Kg</item>
+        <item>L</item>
+        <item>g</item>
+    </string-array>
+</resources>

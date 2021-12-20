@@ -19,4 +19,9 @@ interface MarketApi {
 
     @POST(Constants.UPDATE_PROFILE_URL)
     suspend fun updateProfile(@Header("token") token: String, @Body request: UpdateProfileRequest): UpdateProfileResponse
+
+    @POST(Constants.ADD_PRODUCT_URL)
+    suspend fun addProduct(@Header("token") token: String, @Body request: AddProductRequest): AddProductResponse
+
+
 }
