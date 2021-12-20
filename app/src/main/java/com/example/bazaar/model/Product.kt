@@ -26,9 +26,9 @@ data class ProductResponse(val item_count: Int, val products: List<Product>, val
 
 @JsonClass(generateAdapter = true)
 data class AddProductRequest (
-//    var rating: Double,
-//    var amount_type: String,
-//    var price_type: String,
+    var rating: Double=0.0,
+    var amount_type: String="",
+    var price_type: String="",
     var is_active: Boolean,
     var price_per_unit: String,
     var units: String,

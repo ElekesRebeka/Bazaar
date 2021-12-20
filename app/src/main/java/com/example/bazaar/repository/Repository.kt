@@ -26,7 +26,11 @@ class Repository {
         return RetrofitInstance.api.getProducts(token)
     }
 
-    suspend fun addProduct(token: String, request: AddProductRequest) :AddProductResponse{
-        return RetrofitInstance.api.addProduct(token,request)
+    suspend fun addProduct(token: String, title:String, description:String, price_per_unit: String, units: String, is_activated:Boolean, amount_type: String, price_type:String, rating:Double) :AddProductResponse{
+        return RetrofitInstance.api.addProduct(token,title, description, price_per_unit, units, is_activated, amount_type, price_type, rating)
+    }
+
+    suspend fun getUserData(username: String): GetUserDataResponse {
+        return RetrofitInstance.api.getUserData(username)
     }
 }

@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_listFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_profileViewFragment"
+            app:destination="@id/profileViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -85,4 +88,9 @@
             android:id="@+id/action_addProductFragment_to_listFragment"
             app:destination="@id/listFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profileViewFragment"
+        android:name="com.example.bazaar.ui.auth.ProfileViewFragment"
+        android:label="fragment_profile_view"
+        tools:layout="@layout/fragment_profile_view" />
 </navigation>

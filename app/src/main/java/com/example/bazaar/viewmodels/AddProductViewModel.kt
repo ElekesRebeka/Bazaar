@@ -27,7 +27,7 @@ class AddProductViewModel (val repository: Repository) : ViewModel() {
             AddProductRequest(is_active = product.value!!.is_active, price_per_unit = product.value!!.price_per_unit, units = product.value!!.units,
                 title = product.value!!.title, description = product.value!!.description)
         try {
-            val result = repository.addProduct(MyApplication.token, request)
+            val result = repository.addProduct(MyApplication.token, request.title, request.description, request.price_per_unit, request.units, request.is_active, "","", 4.0)
         } catch (e: Exception) {
             Log.d("xxx", "AddProductViewModel exception: ${e.toString()}")
         }

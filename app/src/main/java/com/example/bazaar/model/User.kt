@@ -77,6 +77,22 @@ data class ResetPasswordResponse (
     var timestamp: String
 )
 
+@JsonClass(generateAdapter = true)
+data class ResponseUser (
+    var username: String,
+    var phone_number: Int,
+    var email: String,
+    var is_activated: Boolean,
+    var creation_time: Long
+)
+
+@JsonClass(generateAdapter = true)
+data class GetUserDataResponse(
+    var code: String,
+    var data: ResponseUser,
+    var timestamp: String
+)
+
 
 
 // GSon converter

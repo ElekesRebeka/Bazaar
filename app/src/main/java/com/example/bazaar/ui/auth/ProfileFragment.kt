@@ -34,6 +34,9 @@ class ProfileFragment : Fragment() {
         super.onCreate(savedInstanceState)
         //val factory = UpdateViewModelFactory(this.requireContext(), Repository())
         //updateViewModel = ViewModelProvider(this, factory).get(UpdateViewModel::class.java)
+        lifecycleScope.launch {
+            updateViewModel.getData()
+        }
     }
 
     override fun onCreateView(
