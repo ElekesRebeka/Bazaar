@@ -19,11 +19,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="USERNAME"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,14 +41,13 @@
         app:hintTextColor="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name">
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView">
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:ems="10"
-            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textColor="@color/white"
             android:textColorHint="@color/darkGray"
@@ -77,7 +76,6 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/username"
         android:textColorHint="@color/darkGray"
         android:textColor="@color/white"
         />
@@ -102,7 +100,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="@string/phoneNumber"
         android:textColorHint="@color/darkGray"
         android:textColor="@color/white"
         android:inputType="phone"

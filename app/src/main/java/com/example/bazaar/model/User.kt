@@ -52,7 +52,8 @@ data class UpdateData (
     var username: String,
     var phone_number: String,
     var email: String,
-    var isActivated: Boolean,
+    var firebase_token: String,
+    var is_activated: Boolean,
     var creation_time: Long,
     var token: String,
 )
@@ -60,7 +61,7 @@ data class UpdateData (
 @JsonClass(generateAdapter = true)
 data class UpdateProfileResponse (
     var code: String,
-    var updateData: UpdateData,
+    var updatedData: UpdateData,
     var timestamp: String
 )
 
@@ -89,7 +90,7 @@ data class ResponseUser (
 @JsonClass(generateAdapter = true)
 data class GetUserDataResponse(
     var code: String,
-    var data: ResponseUser,
+    var data: List<ResponseUser>,
     var timestamp: String
 )
 

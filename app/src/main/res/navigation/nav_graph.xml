@@ -31,12 +31,6 @@
         <action
             android:id="@+id/action_listFragment_to_myMarketFragment"
             app:destination="@id/myMarketFragment" />
-        <action
-            android:id="@+id/action_listFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
-        <action
-            android:id="@+id/action_listFragment_to_profileViewFragment"
-            app:destination="@id/profileViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -87,6 +81,9 @@
         <action
             android:id="@+id/action_addProductFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_addProductFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileViewFragment"

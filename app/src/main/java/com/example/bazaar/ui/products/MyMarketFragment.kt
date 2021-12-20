@@ -35,8 +35,6 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
     }
 
     private lateinit var recycler_view: RecyclerView
-    //private lateinit var listViewModel: ListViewModel
-    //private lateinit var loginViewModel: LoginViewModel
     private lateinit var adapter: DataAdapter
     lateinit var filteredList: List<Product>
 
@@ -87,7 +85,7 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
     }
 
     override fun onItemClick(position: Int) {
-//        TODO("Not yet implemented")
+        //findNavController().navigate(R.id.action_listFragment_to_productDetailFragment)
     }
 
     override fun onItemLongClick(position: Int) {

@@ -14,10 +14,10 @@ import com.example.bazaar.repository.Repository
 import kotlinx.coroutines.launch
 
 class UpdateViewModel (val repository: Repository) : ViewModel() {
-    var user: MutableLiveData<User> = MutableLiveData()
+    var user: MutableLiveData<UpdateData> = MutableLiveData()
 
     init{
-        user.value=User()
+        user.value=UpdateData("","","", "", true, 0,MyApplication.token)
     }
 
     suspend fun update() {
@@ -32,11 +32,12 @@ class UpdateViewModel (val repository: Repository) : ViewModel() {
         }
     }
 
-    suspend fun getData(){
+    suspend fun getData(username: String){
         try{
-            val result = repository.getUserData(MyApplication.token)
-            Log.d("xxx", "MyApplication - token:  ${MyApplication.token}")
-            Log.d("xxx", "Result:  $result")
+            val result = repository.getUserData(username)
+            user.value!!.phone_number=result.data[0].phone_number.toString()
+            user.value!!.email=result.data[0].email
+            user.value!!.username=result.data[0].username
         }
         catch (e: Exception) {
             Log.d("xxx", "UpdateViewModel - exception: ${e.toString()}")

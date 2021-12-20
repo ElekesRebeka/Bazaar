@@ -20,12 +20,8 @@ class AddProductViewModel (val repository: Repository) : ViewModel() {
 
     suspend fun addProduct() {
         Log.d("xxx","add product: "+ product.value.toString())
-        val request =
-//            AddProductRequest(rating = product.value!!.rating, amount_type = product.value!!.amount_type, price_type = product.value!!.price_type,
-//                is_active = product.value!!.is_active, price_per_unit = product.value!!.price_per_unit, units = product.value!!.units,
-//                title = product.value!!.title, description = product.value!!.description)
-            AddProductRequest(is_active = product.value!!.is_active, price_per_unit = product.value!!.price_per_unit, units = product.value!!.units,
-                title = product.value!!.title, description = product.value!!.description)
+        val request = AddProductRequest(is_active = product.value!!.is_active, price_per_unit = product.value!!.price_per_unit,
+            units = product.value!!.units, title = product.value!!.title, description = product.value!!.description)
         try {
             val result = repository.addProduct(MyApplication.token, request.title, request.description, request.price_per_unit, request.units, request.is_active, "","", 4.0)
         } catch (e: Exception) {

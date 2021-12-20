@@ -26,7 +26,7 @@ class AddProductFragment : Fragment() {
     }
 
     private lateinit var addProduct:Button
-
+    private lateinit var previewButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -69,6 +69,7 @@ class AddProductFragment : Fragment() {
         val description: EditText = view.findViewById(R.id.description)
         val active: Switch = view.findViewById(R.id.switch1)
         addProduct = view.findViewById(R.id.launch)
+        previewButton = view.findViewById(R.id.preview)
         addProduct.setOnClickListener{
             addProductViewModel.product.value.let{
                 if (it != null) {
@@ -98,6 +99,9 @@ class AddProductFragment : Fragment() {
                 addProductViewModel.addProduct()
             }
             findNavController().navigate(R.id.action_addProductFragment_to_listFragment)
+        }
+        addProduct.setOnClickListener{
+            findNavController().navigate(R.id.action_addProductFragment_to_productDetailFragment)
         }
         return view
     }

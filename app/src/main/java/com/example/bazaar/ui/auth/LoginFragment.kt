@@ -16,6 +16,8 @@ import com.example.bazaar.R
 import com.example.bazaar.repository.Repository
 import com.example.bazaar.viewmodels.LoginViewModel
 import com.example.bazaar.viewmodels.LoginViewModelFactory
+import com.example.bazaar.viewmodels.UpdateViewModel
+import com.example.bazaar.viewmodels.UpdateViewModelFactory
 import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
@@ -25,6 +27,11 @@ class LoginFragment : Fragment() {
     private val loginViewModel: LoginViewModel by lazy{
         ViewModelProvider(requireActivity(),factoryLogin).get((LoginViewModel::class.java))
     }
+
+//    val factoryUpdate = UpdateViewModelFactory( Repository())
+//    private val updateViewModel: UpdateViewModel by lazy{
+//        ViewModelProvider(requireActivity(), factoryUpdate).get((UpdateViewModel::class.java))
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +60,7 @@ class LoginFragment : Fragment() {
             }
             lifecycleScope.launch {
                 loginViewModel.login()
+                //updateViewModel.getData(email.text.toString())
             }
 
         }

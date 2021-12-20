@@ -29,9 +29,9 @@ class ProfileViewFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile_view, container, false)
 
-        lifecycleScope.launch {
-            updateViewModel.getData()
-        }
+        //lifecycleScope.launch {
+            //updateViewModel.getData()
+        //}
 
         return view
     }
