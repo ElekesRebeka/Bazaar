@@ -1,6 +1,7 @@
 package com.example.bazaar.ui.products
 
 import android.os.Bundle
+import android.util.Log
 
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,8 +16,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.bazaar.MainActivity
+import com.example.bazaar.MyApplication
 import com.example.bazaar.R
 import com.example.bazaar.adapters.DataAdapter
+import com.example.bazaar.manager.SharedPreferencesManager
 import com.example.bazaar.model.Product
 import com.example.bazaar.repository.Repository
 import com.example.bazaar.viewmodels.ListViewModel
@@ -64,7 +68,21 @@ class ListFragment : Fragment() , DataAdapter.OnItemClickListener, DataAdapter.O
     }
 
     override fun onItemClick(position: Int) {
-        //findNavController().navigate(R.id.action_listFragment_to_productDetailFragment)
+        listViewModel.products.value?.get(position)
+            ?.let { MainActivity.sharedPreferences.putStringValue("actual_item_user", it.username) }
+        listViewModel.products.value?.get(position)
+            ?.let { MainActivity.sharedPreferences.putStringValue("actual_item_date", it.creation_time.toString()) }
+        listViewModel.products.value?.get(position)
+            ?.let { MainActivity.sharedPreferences.putStringValue("actual_item_name", it.title) }
+        listViewModel.products.value?.get(position)
+            ?.let { MainActivity.sharedPreferences.putStringValue("actual_item_price", it.price_per_unit) }
+        listViewModel.products.value?.get(position)
+            ?.let { MainActivity.sharedPreferences.putStringValue("actual_item_is_active", it.is_active.toString()) }
+        listViewModel.products.value?.get(position)
+            ?.let { MainActivity.sharedPreferences.putStringValue("actual_item_amount", it.units) }
+        listViewModel.products.value?.get(position)
+            ?.let { MainActivity.sharedPreferences.putStringValue("actual_item_description", it.description) }
+        findNavController().navigate(R.id.action_listFragment_to_productDetailViewFragment2)
     }
 
     override fun onItemLongClick(position: Int) {

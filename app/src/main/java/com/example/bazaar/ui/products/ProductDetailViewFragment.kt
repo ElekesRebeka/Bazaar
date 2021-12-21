@@ -1,33 +1,45 @@
 package com.example.bazaar.ui.products
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.bazaar.MainActivity
+import com.example.bazaar.MyApplication
 import com.example.bazaar.R
+import com.example.bazaar.adapters.DataAdapter
+import com.example.bazaar.model.Product
+import com.example.bazaar.repository.Repository
+import com.example.bazaar.viewmodels.ListViewModel
+import com.example.bazaar.viewmodels.ListViewModelFactory
+import android.content.res.ColorStateList
+import android.graphics.Color
+import java.text.SimpleDateFormat
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProductDetailViewFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProductDetailViewFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    //lateinit var listViewModel: ListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+//        val factory = ListViewModelFactory(Repository())
+//        listViewModel = ViewModelProvider(this, factory).get(ListViewModel::class.java)
+//        Log.d("xxx","ProductDetailViewFragment position: ${listViewModel.actualItemPosition.value}")
+    }
+
+    fun convertLongToTime(time: Long): String {
+        val date = Date(time)
+        val format = SimpleDateFormat("yyyy.MM.dd")
+        return format.format(date)
     }
 
     override fun onCreateView(
@@ -35,26 +47,48 @@ class ProductDetailViewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product_detail_view, container, false)
+        val view = inflater.inflate(R.layout.fragment_product_detail_view, container, false)
+
+        //Log.d("xxx","ProductDetailViewFragment position: ${listViewModel.actualItemPosition.value}")
+        //Log.d("xxx","ProductDetailViewFragment: ${listViewModel.products.value}")
+        val user = MainActivity.sharedPreferences.getStringValue("actual_item_user", "")
+        val date = MainActivity.sharedPreferences.getStringValue("actual_item_date", "")
+        val name = MainActivity.sharedPreferences.getStringValue("actual_item_name", "")
+        val price = MainActivity.sharedPreferences.getStringValue("actual_item_price","")
+        val active = MainActivity.sharedPreferences.getStringValue("actual_item_is_active","")
+        val amount = MainActivity.sharedPreferences.getStringValue("actual_item_amount", "")
+        val description = MainActivity.sharedPreferences.getStringValue("actual_item_description","")
+        Log.d("xxx","ProductDetailViewFragment: $user $date $name $price $active $amount $description")
+
+        val sellerTextView :TextView = view.findViewById(R.id.seller)
+        val dateTextView :TextView = view.findViewById(R.id.date)
+        val productName :TextView = view.findViewById(R.id.productName)
+        val priceTextView :TextView = view.findViewById(R.id.price)
+        val activeTextView :TextView = view.findViewById(R.id.active)
+        val descriptionTextView :TextView = view.findViewById(R.id.description)
+        val availableAmount: TextView = view.findViewById(R.id.textView7)
+
+        val dateString = convertLongToTime(date!!.toLong())
+
+        sellerTextView.text=user
+        dateTextView.text=dateString
+        productName.text=name
+        priceTextView.text=price
+        if(active=="true"){
+            activeTextView.text="Active"
+        }
+        else{
+            activeTextView.text="Inactive"
+            activeTextView.setTextColor(Color.parseColor("#9A9A9A"));
+        }
+
+        descriptionTextView.text=description
+        availableAmount.text=amount
+        return view
     }
 
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProductDetailViewFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProductDetailViewFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
     }
 }

@@ -85,7 +85,7 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
     }
 
     override fun onItemClick(position: Int) {
-        //findNavController().navigate(R.id.action_listFragment_to_productDetailFragment)
+        findNavController().navigate(R.id.action_myMarketFragment_to_productDetailViewFragment2)
     }
 
     override fun onItemLongClick(position: Int) {

@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.bazaar.manager.SharedPreferencesManager
 import com.example.bazaar.model.Product
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.MaterialToolbar
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         initialize()
         configNavController()
         initMenu()
+        sharedPreferences = SharedPreferencesManager(applicationContext)
     }
 
     private fun hide(){
@@ -97,5 +99,9 @@ class MainActivity : AppCompatActivity() {
                 else -> visible()
             }
         }
+    }
+
+    companion object{
+        lateinit var sharedPreferences: SharedPreferencesManager
     }
 }

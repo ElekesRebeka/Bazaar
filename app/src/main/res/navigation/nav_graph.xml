@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_listFragment_to_myMarketFragment"
             app:destination="@id/myMarketFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_productDetailViewFragment2"
+            app:destination="@id/productDetailViewFragment2" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -67,6 +70,9 @@
         <action
             android:id="@+id/action_myMarketFragment_to_addProductFragment"
             app:destination="@id/addProductFragment" />
+        <action
+            android:id="@+id/action_myMarketFragment_to_productDetailViewFragment2"
+            app:destination="@id/productDetailViewFragment2" />
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
@@ -90,4 +96,8 @@
         android:name="com.example.bazaar.ui.auth.ProfileViewFragment"
         android:label="fragment_profile_view"
         tools:layout="@layout/fragment_profile_view" />
+    <fragment
+        android:id="@+id/productDetailViewFragment2"
+        android:name="com.example.bazaar.ui.products.ProductDetailViewFragment"
+        android:label="ProductDetailViewFragment" />
 </navigation>
