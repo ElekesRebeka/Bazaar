@@ -26,6 +26,7 @@ class UpdateViewModel (val repository: Repository) : ViewModel() {
         try {
             Log.d("xxx","Profile - token:  ${MyApplication.token}")
             val result = repository.update(MyApplication.token, request)
+            MyApplication.token = result.updatedData.token
             Log.d("xxx", "MyApplication - token:  ${MyApplication.token}")
         } catch (e: Exception) {
             Log.d("xxx", "UpdateViewModel - exception: ${e.toString()}")
