@@ -14,15 +14,15 @@ import com.example.bazaar.repository.Repository
 import kotlinx.coroutines.launch
 
 class UpdateViewModel (val repository: Repository) : ViewModel() {
-    var user: MutableLiveData<UpdateData> = MutableLiveData()
+    var user: MutableLiveData<ResponseUser> = MutableLiveData()
 
     init{
-        user.value=UpdateData("","","", "", true, 0,MyApplication.token)
+        getData()
     }
 
     suspend fun update() {
         val request =
-            UpdateProfileRequest(username = user.value!!.username, email = user.value!!.email, phone_number = user.value!!.phone_number)
+            UpdateProfileRequest(username = user.value!!.username, email = user.value!!.email, phone_number = user.value!!.phone_number.toString())
         try {
             Log.d("xxx","Profile - token:  ${MyApplication.token}")
             val result = repository.update(MyApplication.token, request)
@@ -32,15 +32,16 @@ class UpdateViewModel (val repository: Repository) : ViewModel() {
         }
     }
 
-    suspend fun getData(username: String){
-        try{
-            val result = repository.getUserData(username)
-            user.value!!.phone_number=result.data[0].phone_number.toString()
-            user.value!!.email=result.data[0].email
-            user.value!!.username=result.data[0].username
-        }
-        catch (e: Exception) {
-            Log.d("xxx", "UpdateViewModel - exception: ${e.toString()}")
+    private fun getData(){
+        viewModelScope.launch{
+            try{
+                val result = repository.getUserData("Rebeka4")
+                //Log.d("xxx","getData: ${result.data[0]}")
+                user.value = result.data[0]
+            }
+            catch (e: Exception) {
+                Log.d("xxx", "UpdateViewModel - exception: ${e.toString()}")
+            }
         }
     }
 }

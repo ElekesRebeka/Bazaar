@@ -40,12 +40,12 @@ class ProfileFragment : Fragment() {
         ViewModelProvider(requireActivity(), factoryUpdate).get((UpdateViewModel::class.java))
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        lifecycleScope.launch {
-            updateViewModel.getData(loginViewModel.user.value!!.username)
-        }
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+////        lifecycleScope.launch {
+////            updateViewModel.getData(loginViewModel.user.value!!.username)
+////        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,11 +59,10 @@ class ProfileFragment : Fragment() {
         name = view.findViewById(R.id.nameTextView)
 
         updateViewModel.user.observe(viewLifecycleOwner) {
-            Log.d("xxx", "${updateViewModel.user.value}")
             name.text = loginViewModel.user.value!!.username
             username.setText(updateViewModel.user.value!!.username)
             email.setText(updateViewModel.user.value!!.email)
-            phone.setText(updateViewModel.user.value!!.phone_number)
+            phone.setText(updateViewModel.user.value!!.phone_number.toString())
         }
 
             updateButton.setOnClickListener {
@@ -76,10 +75,11 @@ class ProfileFragment : Fragment() {
                         it.email = email.text.toString()
                         Log.d("xxx", it.email)
                     }
-//                    if (it != null) {
-//                        it.phone_number = phone.text.toInt()
-//                        Log.d("xxx", it.phone_number)
-//                    }
+                    if (it != null) {
+                        it.phone_number = phone.text.toString().toInt()
+                        Log.d("xxx", it.phone_number.toString())
+                        //Log.d("xxx", phone.text.toString())
+                    }
                 }
                 lifecycleScope.launch {
                     updateViewModel.update()

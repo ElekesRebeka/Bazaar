@@ -102,7 +102,7 @@
         android:ems="10"
         android:textColorHint="@color/darkGray"
         android:textColor="@color/white"
-        android:inputType="phone"
+        android:inputType="number"
         />
     </com.google.android.material.textfield.TextInputLayout>
 
