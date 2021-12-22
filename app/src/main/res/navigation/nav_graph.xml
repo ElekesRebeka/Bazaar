@@ -99,5 +99,9 @@
     <fragment
         android:id="@+id/productDetailViewFragment2"
         android:name="com.example.bazaar.ui.products.ProductDetailViewFragment"
-        android:label="ProductDetailViewFragment" />
+        android:label="ProductDetailViewFragment" >
+        <action
+            android:id="@+id/action_productDetailViewFragment2_to_profileViewFragment"
+            app:destination="@id/profileViewFragment" />
+    </fragment>
 </navigation>

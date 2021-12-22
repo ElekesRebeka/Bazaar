@@ -84,6 +84,13 @@ class ProductDetailViewFragment : Fragment() {
 
         descriptionTextView.text=description
         availableAmount.text=amount
+
+        //user click
+        sellerTextView.setOnClickListener(){
+            MainActivity.sharedPreferences.putStringValue("seller", sellerTextView.text.toString())
+            findNavController().navigate(R.id.action_productDetailViewFragment2_to_profileViewFragment)
+        }
+
         return view
     }
 

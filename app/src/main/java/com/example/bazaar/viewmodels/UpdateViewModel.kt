@@ -36,9 +36,12 @@ class UpdateViewModel (val repository: Repository) : ViewModel() {
     private fun getData(){
         viewModelScope.launch{
             try{
-                val result = repository.getUserData("Rebeka4")
+                val username = MainActivity.sharedPreferences.getStringValue("logged_in_user_name", "")
+                val result = username?.let { repository.getUserData(it) }
                 //Log.d("xxx","getData: ${result.data[0]}")
-                user.value = result.data[0]
+                if (result != null) {
+                    user.value = result.data[0]
+                }
             }
             catch (e: Exception) {
                 Log.d("xxx", "UpdateViewModel - exception: ${e.toString()}")

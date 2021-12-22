@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.bazaar.MainActivity
 import com.example.bazaar.R
 import com.example.bazaar.repository.Repository
 import com.example.bazaar.viewmodels.LoginViewModel
@@ -53,9 +54,11 @@ class LoginFragment : Fragment() {
             loginViewModel.user.value.let {
                 if (it != null) {
                     it.username = email.text.toString()
+                    MainActivity.sharedPreferences.putStringValue("logged_in_user_name", it.username)
                 }
                 if (it != null) {
                     it.password = password.text.toString()
+                    MainActivity.sharedPreferences.putStringValue("logged_in_user_pass", it.password)
                 }
             }
             lifecycleScope.launch {
