@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bazaar.MainActivity
 import com.example.bazaar.R
 import com.example.bazaar.adapters.DataAdapter
 import com.example.bazaar.model.Product
@@ -88,7 +89,9 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
         findNavController().navigate(R.id.action_myMarketFragment_to_productDetailViewFragment2)
     }
 
+    //edit product
     override fun onItemLongClick(position: Int) {
-//        TODO("Not yet implemented")
+        MainActivity.sharedPreferences.putStringValue("my_edit_product", position.toString())
+        findNavController().navigate(R.id.action_myMarketFragment_to_editProductFragment)
     }
 }

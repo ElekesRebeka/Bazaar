@@ -9,7 +9,6 @@ import kotlinx.coroutines.launch
 
 class ListViewModel(private val repository: Repository) : ViewModel() {
     var products: MutableLiveData<List<Product>> = MutableLiveData()
-    var actualItemPosition: MutableLiveData<Int> = MutableLiveData()
 
     init{
         Log.d("xxx", "ListViewModel constructor - Token: ${MyApplication.token}")

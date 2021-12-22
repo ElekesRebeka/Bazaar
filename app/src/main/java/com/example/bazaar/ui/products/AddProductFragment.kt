@@ -86,7 +86,7 @@ class AddProductFragment : Fragment() {
                     it.description = description.text.toString()
                 }
                 if (it != null) {
-                    it.is_active = active.isActivated
+                    it.is_active = active.isChecked
                 }
                 if (it != null) {
                     it.amount_type = spinner.toString()

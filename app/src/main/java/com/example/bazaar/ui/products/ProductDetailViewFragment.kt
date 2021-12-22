@@ -27,15 +27,6 @@ import java.util.*
 
 
 class ProductDetailViewFragment : Fragment() {
-    //lateinit var listViewModel: ListViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        val factory = ListViewModelFactory(Repository())
-//        listViewModel = ViewModelProvider(this, factory).get(ListViewModel::class.java)
-//        Log.d("xxx","ProductDetailViewFragment position: ${listViewModel.actualItemPosition.value}")
-    }
-
     fun convertLongToTime(time: Long): String {
         val date = Date(time)
         val format = SimpleDateFormat("yyyy.MM.dd")

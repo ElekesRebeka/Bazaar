@@ -51,3 +51,31 @@ data class AddProductResponse (
     var images: List<Image>,
     var creation_time: Long
 )
+
+@JsonClass(generateAdapter = true)
+data class EditProductRequest (
+    var price_per_unit: Int,
+    var is_active: Boolean,
+    var title: String,
+    var rating: String,
+    var amount_type: String,
+    var price_type: String
+)
+
+@JsonClass(generateAdapter = true)
+data class EditProductResponse (
+    var rating: Double,
+    var amount_type: String,
+    var price_type: String,
+    var product_id: String,
+    var username: String,
+    var is_active: Boolean,
+    var price_per_unit: String,
+    var units: String,
+    var description: String,
+    var title: String,
+    var images: List<Image>,
+    var creation_time: Long,
+    var messages: List<String>
+)
+

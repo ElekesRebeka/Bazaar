@@ -40,13 +40,6 @@ class ProfileFragment : Fragment() {
         ViewModelProvider(requireActivity(), factoryUpdate).get((UpdateViewModel::class.java))
     }
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-////        lifecycleScope.launch {
-////            updateViewModel.getData(loginViewModel.user.value!!.username)
-////        }
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
