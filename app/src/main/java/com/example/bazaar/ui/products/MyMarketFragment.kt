@@ -86,7 +86,8 @@ class MyMarketFragment : Fragment(), DataAdapter.OnItemClickListener, DataAdapte
     }
 
     override fun onItemClick(position: Int) {
-        findNavController().navigate(R.id.action_myMarketFragment_to_productDetailViewFragment2)
+        MainActivity.sharedPreferences.putStringValue("my_product_pos", position.toString())
+        findNavController().navigate(R.id.action_myMarketFragment_to_myProductDetailFragment)
     }
 
     //edit product

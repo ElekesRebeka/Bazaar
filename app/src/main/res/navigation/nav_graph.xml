@@ -76,6 +76,9 @@
         <action
             android:id="@+id/action_myMarketFragment_to_editProductFragment"
             app:destination="@id/editProductFragment" />
+        <action
+            android:id="@+id/action_myMarketFragment_to_myProductDetailFragment"
+            app:destination="@id/myProductDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
@@ -112,4 +115,13 @@
         android:name="com.example.bazaar.ui.products.EditProductFragment"
         android:label="fragment_edit_product"
         tools:layout="@layout/fragment_edit_product" />
+    <fragment
+        android:id="@+id/myProductDetailFragment"
+        android:name="com.example.bazaar.ui.products.MyProductDetailFragment"
+        android:label="fragment_my_product_detail"
+        tools:layout="@layout/fragment_my_product_detail" >
+        <action
+            android:id="@+id/action_myProductDetailFragment_to_profileViewFragment"
+            app:destination="@id/profileViewFragment" />
+    </fragment>
 </navigation>
