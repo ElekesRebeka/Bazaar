@@ -70,8 +70,9 @@ class AddProductFragment : Fragment() {
         val active: Switch = view.findViewById(R.id.switch1)
         addProduct = view.findViewById(R.id.launch)
         previewButton = view.findViewById(R.id.preview)
+
         addProduct.setOnClickListener{
-            addProductViewModel.product.value.let{
+            addProductViewModel.product.value.let {
                 if (it != null) {
                     it.title = title.text.toString()
                 }
@@ -93,14 +94,13 @@ class AddProductFragment : Fragment() {
                 if (it != null) {
                     it.price_type = spinner2.toString()
                 }
-
             }
             lifecycleScope.launch {
                 addProductViewModel.addProduct()
             }
             findNavController().navigate(R.id.action_addProductFragment_to_listFragment)
         }
-        addProduct.setOnClickListener{
+        previewButton.setOnClickListener{
             findNavController().navigate(R.id.action_addProductFragment_to_productDetailFragment)
         }
         return view

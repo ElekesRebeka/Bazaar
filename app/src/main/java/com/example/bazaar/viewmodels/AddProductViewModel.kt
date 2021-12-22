@@ -28,4 +28,8 @@ class AddProductViewModel (val repository: Repository) : ViewModel() {
             Log.d("xxx", "AddProductViewModel exception: ${e.toString()}")
         }
     }
+
+    fun getProductDetailsToPreview(): Product? {
+        return product.value
+    }
 }

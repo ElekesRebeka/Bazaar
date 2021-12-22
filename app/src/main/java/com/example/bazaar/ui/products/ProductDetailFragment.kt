@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,17 +15,13 @@ import com.example.bazaar.R
 import com.example.bazaar.adapters.DataAdapter
 import com.example.bazaar.model.Product
 import com.example.bazaar.repository.Repository
+import com.example.bazaar.viewmodels.AddProductViewModel
 import com.example.bazaar.viewmodels.ListViewModel
 import com.example.bazaar.viewmodels.ListViewModelFactory
 
 class ProductDetailFragment : Fragment() {
-    val factoryList = ListViewModelFactory(Repository())
-    private val listViewModel: ListViewModel by lazy{
-        ViewModelProvider(requireActivity(),factoryList).get((ListViewModel::class.java))
-    }
-
-    private lateinit var recycler_view: RecyclerView
-    private lateinit var adapter: DataAdapter
+    val model: AddProductViewModel by viewModels()
+    val product = model.getProductDetailsToPreview()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +34,7 @@ class ProductDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_product_detail, container, false)
-
+        Log.d("xxx","ProductDetailFragment - ${product.toString()}")
 
         return view
     }
