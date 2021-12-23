@@ -70,17 +70,17 @@ class DataAdapterForOrders(private var list: ArrayList<Order>,
         val currentItem = list[position]
         //Log.d("xxx","Current item: ${list[position]}")
         Log.d("xxx","Current item: ${currentItem}")
-//        holder.textView_prod_title.text = currentItem.title
-//        holder.textView_price.text = currentItem.price_per_unit
-//        //holder.textView_priceInfo.text = currentItem.
-//        holder.textView_user.text = currentItem.username
-//        holder.textView_status.text = currentItem.status
-//        holder.textView_amount.text = currentItem.units
-//        //holder.textView_amountInfo.text = currentItem.username
-//        val images = currentItem.images
-//        if( images != null && images.size > 0) {
-//            Log.d("xxx", "#num_images: ${images.size}")
-//        }
+        holder.textView_prod_title.text = currentItem.title
+        holder.textView_price.text = currentItem.price_per_unit
+        //holder.textView_priceInfo.text = currentItem.
+        holder.textView_user.text = currentItem.username
+        holder.textView_status.text = currentItem.status
+        holder.textView_amount.text = currentItem.units
+        //holder.textView_amountInfo.text = currentItem.username
+        val images = currentItem.images
+        if( images != null && images.size > 0) {
+            Log.d("xxx", "#num_images: ${images.size}")
+        }
         Glide.with(this.context)
             .load(R.drawable.palinka)
             .override(200, 200)

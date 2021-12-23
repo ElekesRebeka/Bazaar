@@ -13,7 +13,7 @@ class OrdersListViewModel (private val repository: Repository) : ViewModel() {
     var orders: MutableLiveData<List<Order>> = MutableLiveData()
 
     init{
-        //Log.d("xxx", "OrdersListViewModel constructor - Token: ${MyApplication.token}")
+        Log.d("xxx", "OrdersListViewModel constructor - Token: ${MyApplication.token}")
         getOrders()
     }
 
