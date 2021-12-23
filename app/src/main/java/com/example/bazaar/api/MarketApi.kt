@@ -38,4 +38,7 @@ interface MarketApi {
     @POST(Constants.UPDATE_PRODUCT_URL)
     suspend fun updateProduct(@Header("token") token: String, @Body request: EditProductRequest): EditProductResponse
 
+    @GET(Constants.GET_ORDER_URL)
+    suspend fun getOrders(@Header("token") token: String, @Header("limit") limit:Int = 100): OrderResponse
+
 }

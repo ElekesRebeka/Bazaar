@@ -33,4 +33,8 @@ class Repository {
     suspend fun getUserData(username: String): GetUserDataResponse {
         return RetrofitInstance.api.getUserData(username)
     }
+
+    suspend fun getOrders(token: String): OrderResponse {
+        return RetrofitInstance.api.getOrders(token)
+    }
 }

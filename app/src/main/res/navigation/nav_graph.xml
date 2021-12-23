@@ -124,4 +124,9 @@
             android:id="@+id/action_myProductDetailFragment_to_profileViewFragment"
             app:destination="@id/profileViewFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/ordersListFragment"
+        android:name="com.example.bazaar.ui.orders.OrdersListFragment"
+        android:label="fragment_orders_list"
+        tools:layout="@layout/fragment_orders_list" />
 </navigation>

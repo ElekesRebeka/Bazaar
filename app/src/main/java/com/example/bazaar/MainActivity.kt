@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.union -> {
-                    // Respond to navigation item 2 click
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.ordersListFragment)
                     true
                 }
                 else -> false
